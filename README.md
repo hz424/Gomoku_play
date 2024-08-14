@@ -1,6 +1,6 @@
 This repository contains the code for the Gomoku game implementation.
 
-More description here : (Gomoku_play)(https://hz424.github.io/data/gomoku/)
+More description here : [Gomoku_play](https://hz424.github.io/data/gomoku/)
 
 
 ---
