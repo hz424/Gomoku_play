@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/gomoku6.css">
+    <style>
+        #start-over-button, #oops-undo-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #181717;
+            border: 2px solid #797979;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        #start-over-button {
+            background-color: #fab1c0;
+        }
+
+        #start-over-button:hover {
+            background-color: #f39aa1;
+            border-color: #f4a1af;
+        }
+
+        #oops-undo-button {
+            background-color: #b1fab1;
+        }
+
+        #oops-undo-button:hover {
+            background-color: #a1f39a;
+            border-color: #afcfa1;
+        }
+
+        #gomoku-container {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gomoku-container">
+        <div id="game"></div>
+        <!-- Add the Start Over and Oops, Undo! Buttons -->
+        <button id="start-over-button">Start Over</button>
+        <button id="oops-undo-button">Oops, Undo!</button>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/scripts1.js"></script>
+    <script>
+    $(document).ready(function() {
+        let gameInstance;
+
+        function startGame() {
+            $('#game').empty(); 
+            gameInstance = new $.gomoku($('#game'), {
+                ai_first: null,
+                board_size: 20,
+                endgame: function(computer_wins) {
+                    alert('You ' + (computer_wins ? 'lost ^_^ Press Start Over to try again.' : 'won!!!!!'));
+                }
+            });
+        }
+
+        // Start the game for the first time
+        startGame();
+
+        // Add click event for the Start Over button
+        $('#start-over-button').click(function() {
+            startGame(); // Restart the game
+        });
+
+        // Add click event for the Oops, Undo! button
+        $('#oops-undo-button').click(function() {
+            if (gameInstance && typeof gameInstance.regretLastMove === 'function') {
+                gameInstance.regretLastMove(); // Undo the last move
+            } else {
+                alert('No moves to undo!');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

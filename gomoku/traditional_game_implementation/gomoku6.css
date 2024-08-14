@@ -1,0 +1,48 @@
+#zebraGomoku {
+    width: 700px;
+    max-width: 700px;
+    min-width: 700px;
+    height: auto;
+    border: 2px solid #444;
+    background: #f0c1c5;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border-collapse: collapse;
+    table-layout: auto;
+    overflow: hidden; 
+}
+
+#zebraGomoku td {
+    width: 35px !important;
+    min-width: 35px !important;
+    max-width: 35px !important;
+    height: 34px;
+    border: 1px solid #555;
+    position: relative;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#zebraGomoku td:hover {
+    background-color: #e6a8aa;
+}
+
+#zebraGomoku td:after {
+    content: " ";
+    position: absolute;
+    left: 7.5%;
+    top: 7.5%;
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+}
+
+#zebraGomoku td.p0:after {
+    background: radial-gradient(circle at 25% 25%, #FFF, #D0D0D0);
+    box-shadow: 0px 0px 5px 0px rgba(34, 34, 34, 0.6);
+}
+
+#zebraGomoku td.p1:after {
+    background: radial-gradient(circle at 25% 25%, #555, #000);
+    box-shadow: 0px 0px 2px 0px rgba(34, 34, 34, 0.6);
+}
